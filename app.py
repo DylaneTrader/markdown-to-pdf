@@ -1,9 +1,6 @@
 import streamlit as st
 import markdown
-from weasyprint import HTML, CSS
-import tempfile
-import os
-from io import BytesIO
+from weasyprint import HTML
 
 # Page configuration
 st.set_page_config(
@@ -171,7 +168,11 @@ def hello_world():
         
         # Load content from file if uploaded
         if uploaded_file is not None:
-            content = uploaded_file.read().decode('utf-8')
+            try:
+                content = uploaded_file.read().decode('utf-8')
+            except UnicodeDecodeError:
+                st.error("Error: Unable to decode file. Please upload a valid text file.")
+                content = default_content
         else:
             content = default_content
         
@@ -209,6 +210,9 @@ def hello_world():
     
     with col_export1:
         if st.button("🔄 Clear Content", use_container_width=True):
+            # Clear session state to reset to default content
+            if 'pdf_bytes' in st.session_state:
+                del st.session_state['pdf_bytes']
             st.rerun()
     
     with col_export2:
