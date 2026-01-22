@@ -45,6 +45,10 @@ The application will open in your default web browser at `http://localhost:8501`
 - `weasyprint`: HTML to PDF conversion
 - `Pillow`: Image processing support
 
+## Streamlit Cloud Deployment
+
+When deploying to Streamlit Cloud, the `packages.txt` file is required to install system dependencies needed by weasyprint. This file is automatically read by Streamlit Cloud to install the necessary libraries.
+
 ## License
 
 MIT License
