@@ -1,5 +1,0 @@
-# No system packages required - xhtml2pdf is pure Python
-# If you need WeasyPrint later, use these corrected package names:
-# libgdk-pixbuf-2.0-0
-# libpango-1.0-0
-# libpangocairo-1.0-0
